@@ -58,10 +58,7 @@ void Trie::getStringsInternal(shared_ptr<Node> node, vector<char> &trail, vector
 }
 
 vector<string> Trie::getStrings() const {
-    vector<string> results;
-    vector<char> trail;
-    this->getStringsInternal(this->head, trail, results);
-    return results;
+    return this->getStrings("");
 }
 
 vector<string> Trie::getStrings(const string &startsWith) const {
@@ -74,6 +71,8 @@ vector<string> Trie::getStrings(const string &startsWith) const {
 
     vector<char> trail;
     this->getStringsInternal(matchingNode, trail, results);
-    std::transform(results.begin(), results.end(), results.begin(), [startsWith] (string &str) { return str.insert(0, startsWith); });
+    if(!startsWith.empty()) {
+        std::transform(results.begin(), results.end(), results.begin(), [startsWith] (string &str) { return str.insert(0, startsWith); });
+    }
     return results;
 }
