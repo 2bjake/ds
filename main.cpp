@@ -19,7 +19,7 @@ void assertFalse(bool value, string errorMsg) {
     assertTrue(!value, errorMsg);
 }
 
-void matchedStringPrinter(Trie trie, string s) {
+void matchedStringPrinter(Trie &trie, string s) {
     cout << endl << "getStrings(\"" + s + "\")" << endl;
     vector<string> strings = trie.getStrings(s);
         for(auto &str : strings) {
