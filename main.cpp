@@ -62,7 +62,7 @@ int main() {
     }
 
     matchedStringPrinter(trie, "a");
-    matchedStringPrinter(trie, "bb");
+    matchedStringPrinter(trie, "BB");
     matchedStringPrinter(trie, "");
     return 0;
 }
