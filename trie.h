@@ -6,32 +6,27 @@
 #include <string>
 #include <memory>
 
-using std::string;
-using std::map;
-using std::vector;
-using std::shared_ptr;
-
 class Trie {
 private:
     struct Node {
-        map<char, shared_ptr<Node>> children;
+        std::map<char, std::shared_ptr<Node>> children;
         bool value;
     };
 
-    shared_ptr<Node> head;
+    std::shared_ptr<Node> head;
 
-    void insertStringInternal(shared_ptr<Node> node, string s, size_t strIdx);
-    bool hasStringInternal(shared_ptr<Node> node, string s, size_t strIdx) const;
-    shared_ptr<Node> getMatchingNode(shared_ptr<Node> node, string s, size_t strIdx) const;
-    void getStringsInternal(shared_ptr<Node> node, vector<char> &trail, vector<string> &results) const;
+    void insertStringInternal(std::shared_ptr<Node> node, std::string s, std::size_t strIdx);
+    bool hasStringInternal(std::shared_ptr<Node> node, std::string s, std::size_t strIdx) const;
+    std::shared_ptr<Node> getMatchingNode(std::shared_ptr<Node> node, std::string s, std::size_t strIdx) const;
+    void getStringsInternal(std::shared_ptr<Node> node, std::vector<char> &trail, std::vector<std::string> &results) const;
 
 public:
     Trie() : head(new Node()) {}
-    void insertString(const string &s);
-    bool hasString(const string &s) const;
+    void insertString(const std::string &s);
+    bool hasString(const std::string &s) const;
 
-    vector<string> getStrings() const;
-    vector<string> getStrings(const string &startsWith) const;
+    std::vector<std::string> getStrings() const;
+    std::vector<std::string> getStrings(const std::string &startsWith) const;
 };
 
 #endif
